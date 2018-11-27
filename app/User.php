@@ -27,4 +27,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function following() {
+      return $this->belongsToMany(User::class, 'friends', 'follower_id', 'following_id');
+    }
+
+// users that follow this user
+    public function followers() {
+      return $this->belongsToMany(User::class, 'friends', 'following_id', 'follower_id');
+    }
+
+    public function challenges(){
+      return $this->hasMany(Challenge::class, "challenges", "id", "challenge_id");
+    }
+
 }

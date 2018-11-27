@@ -15,6 +15,7 @@ class CreateUserChallengeTable extends Migration
     {
         Schema::create('user_challenge', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer("points");  
             $table->timestamps();
         });
     }

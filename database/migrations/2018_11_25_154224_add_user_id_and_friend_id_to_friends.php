@@ -14,10 +14,10 @@ class AddUserIdAndFriendIdToFriends extends Migration
     public function up()
     {
         Schema::table('friends', function (Blueprint $table) {
-          $table->unsignedInteger("user_id");
-          $table->foreign("user_id")->references("id")->on("users");
-          $table->unsignedInteger("friend_id");
-          $table->foreign("friend_id")->references("id")->on("users");
+          $table->unsignedInteger("follower_id");
+          $table->foreign("follower_id")->references("id")->on("users");
+          $table->unsignedInteger("following_id");
+          $table->foreign("following_id")->references("id")->on("users");
         });
     }
 
