@@ -14,7 +14,7 @@ class AddCategoryIdToChallenges extends Migration
     public function up()
     {
         Schema::table('challenges', function (Blueprint $table) {
-            $table->unsignedInteger("category_id");
+            $table->unsignedInteger("category_id")->nullable();
             $table->foreign("category_id")->references("id")->on("categories");
         });
     }

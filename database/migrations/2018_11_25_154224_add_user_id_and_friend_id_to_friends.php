@@ -29,8 +29,8 @@ class AddUserIdAndFriendIdToFriends extends Migration
     public function down()
     {
         Schema::table('friends', function (Blueprint $table) {
-          $table->dropForeign("friends_user_id_foreign");
-          $table->dropForeign("friends_friend_id_foreign");
+          $table->dropForeign("friends_follower_id_foreign");
+          $table->dropForeign("friends_following_id_foreign");
         });
     }
 }
