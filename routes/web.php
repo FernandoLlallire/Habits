@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+/*Aca las rutas las definimos con el alias que le ponemos con el metodo name*/
+Route::get("/createchallenge", "ChallengesController@create")->name("challenges.create");
+Route::post("/createchallenge/store","ChallengesController@store")->name("challenges.save");

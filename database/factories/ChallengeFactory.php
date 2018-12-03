@@ -16,5 +16,6 @@ $factory->define(App\Challenge::class, function (Faker $faker) {
       "description_step_3" => "Description_3_".$faker->numberBetween(30,40),
       "description_step_4" => "Description_4_".$faker->numberBetween(40,50),
       "description_step_5" => "Description_5_".$faker->numberBetween(50,60),
+      "points" => $faker->numberBetween(0,100),
     ];
 });
