@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function() {
 /*Aca las rutas las definimos con el alias que le ponemos con el metodo name*/
 Route::get("/challenges","ChallengesController@index")->name("challenges.index");
 Route::get("/challenges/create", "ChallengesController@create")->name("challenges.create");
@@ -26,3 +27,4 @@ Route::get("/challenges/{id}/edit","ChallengesController@edit")->name("challenge
 Route::get("/challenges/{id}","ChallengesController@show")->name("challenges.show");
 Route::put("/challenges/{id}","ChallengesController@update")->name("challenges.update");
 Route::delete("/challenges/{id}","ChallengesController@destroy")->name("challenges.delete");
+});

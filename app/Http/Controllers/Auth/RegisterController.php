@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -48,25 +49,47 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+      return Validator::make($data, [
+            'firstName' => 'required|string|max:255',
+            'lastName' =>  'required|string|max:255',
+            'userName' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'country' => 'required',
+            'avatar' => 'required',
+            'password' => 'required|string|min:4|confirmed',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
-     *
+     *$data = $request->all()
      * @param  array  $data
      * @return \App\User
      */
     protected function create(array $data)
     {
+      // Necesito el archivo en una variable esta vez
+        		$file = $data["avatar"];
+
+        		// Nombre final de la imagen
+        		$finalName = strtolower(str_replace(" ", "_", $data["userName"]));
+
+        		// Armo un nombre único para este archivo
+        		$name = $finalName . uniqid('_image_') . "." . $file->extension();
+
+        		// Guardo el archivo en la carpeta
+        		$file->storePubliclyAs("public/avatars", $name);
+
+
         return User::create([
-            'name' => $data['name'],
+            'firstName' => $data['firstName'],
+            'lastName' => $data['lastName'],
+            'userName' => $data['userName'],
             'email' => $data['email'],
+            'country' => $data['country'],
+            'avatar' => $name,
             'password' => Hash::make($data['password']),
         ]);
+
     }
 }
