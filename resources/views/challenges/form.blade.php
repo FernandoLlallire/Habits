@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>challenges</title>
-  </head>
-  <body>
+@extends('layouts.app')
+@section('content')
     {{-- enctype="multipart/form-data" esto es para que podamos pasarle como parametro una imagen al form!--}}
-  <form method="post" action='{{route("challenges.save")}}' enctype="multipart/form-data">
+  <form method="post" action='{{route("challenges.store")}}' enctype="multipart/form-data">
     @csrf
     <div class="form-element">
       <label for="">Nombre: </label>
@@ -83,5 +78,5 @@
     </div>
     <input type="submit" name="" value="Enviar">
   </form>
-  </body>
-</html>
+
+@endsection
