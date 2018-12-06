@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+  <script src="{{ asset('js/formUser.js') }}"></script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -8,20 +9,19 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" class="form" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
                             <label for="firstName" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
-                                <input id="firstName" type="text" class="form-control{{ $errors->has('firstName') ? ' is-invalid' : '' }}" name="firstName" value="{{ old('firstName') }}" required autofocus>
-
+                                <input id="firstName" type="text" class="form-control{{ $errors->has('firstName') ? ' is-invalid' : '' }}" name="firstName" value="{{ old('firstName') }}"  >
+                                <span class="invalid-feedback" role="alert">
                                 @if ($errors->has('firstName'))
-                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('firstName') }}</strong>
-                                    </span>
                                 @endif
+                                </span>
                             </div>
                         </div>
 
@@ -29,13 +29,15 @@
                             <label for="lastName" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ old('lastName') }}" required autofocus>
+                                <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ old('lastName') }}" >
 
-                                @if ($errors->has('lastName'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('lastName') }}</strong>
-                                    </span>
-                                @endif
+
+                                <span class="invalid-feedback" role="alert">
+                                  @if ($errors->has('lastName'))
+                                    <strong>{{ $errors->first('lastName') }}</strong>
+                                  @endif
+                                </span>
+
                             </div>
                         </div>
 
@@ -43,13 +45,12 @@
                             <label for="userName" class="col-md-4 col-form-label text-md-right">{{ __('Nombre de Usuario') }}</label>
 
                             <div class="col-md-6">
-                                <input id="userName" type="text" class="form-control{{ $errors->has('userName') ? ' is-invalid' : '' }}" name="userName" value="{{ old('userName') }}" required autofocus>
-
+                                <input id="userName" type="text" class="form-control{{ $errors->has('userName') ? ' is-invalid' : '' }}" name="userName" value="{{ old('userName') }}" >
+                                <span class="invalid-feedback" role="alert">
                                 @if ($errors->has('userName'))
-                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('userName') }}</strong>
-                                    </span>
                                 @endif
+                                </span>
                             </div>
                         </div>
 
@@ -57,13 +58,12 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" >
+                                <span class="invalid-feedback" role="alert">
                                 @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
                                 @endif
+                                </span>
                             </div>
                         </div>
 
@@ -71,13 +71,12 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" >
+                                <span class="invalid-feedback" role="alert">
                                 @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
                                 @endif
+                                </span>
                             </div>
                         </div>
 
@@ -85,21 +84,26 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation" >
+                                <span class="invalid-feedback" role="alert">
+                                @if ($errors->has('password'))
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                @endif
+                                </span>
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row countryDiv">
                             <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Pais') }}</label>
 
                             <div class="col-md-6">
-                                <input id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ old('country') }}" required autofocus>
-
+                                <select id="country" type="text" class="selectorCountry form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ old('country') }}" >
+                                </select>
+                                <span class="invalid-feedback" role="alert">
                                 @if ($errors->has('country'))
-                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('country') }}</strong>
-                                    </span>
                                 @endif
+                                </span>
                             </div>
                         </div>
 
@@ -107,17 +111,16 @@
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
                             <div class="col-md-6">
-                                <input id="avatar" type="file" class="fcustom-file-input{{ $errors->has('avatar') ? ' is-invalid' : '' }}" name="avatar" required autofocus>
+                                <input id="avatar" type="file" class=" fcustom-file-input{{ $errors->has('avatar') ? ' is-invalid' : '' }}" name="avatar" >
                                 {{-- <span class="errorTxt"></span> --}}
-
+                                <br>
+                                <span class="invalid-feedback" role="alert">
                                 @if ($errors->has('avatar'))
-                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('avatar') }}</strong>
-                                    </span>
                                 @endif
+                                </span>
                             </div>
                         </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
