@@ -109,11 +109,6 @@ class ChallengesController extends Controller
       $challenge->step_3 = $request->step_3;
       $challenge->step_4 = $request->step_4;
       $challenge->step_5 = $request->step_5;
-      $challenge->description_step_1 = $request->description_step_1;
-      $challenge->description_step_2 = $request->description_step_2;
-      $challenge->description_step_3 = $request->description_step_3;
-      $challenge->description_step_4 = $request->description_step_4;
-      $challenge->description_step_5 = $request->description_step_5;
       $challenge->category_id = $request->category_id;
       $challenge->save();
     }

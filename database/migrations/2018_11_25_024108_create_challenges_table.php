@@ -22,11 +22,6 @@ class CreateChallengesTable extends Migration
             $table->integer("step_3");
             $table->integer("step_4");
             $table->integer("step_5");
-            $table->string("description_step_1");
-            $table->string("description_step_2");
-            $table->string("description_step_3");
-            $table->string("description_step_4");
-            $table->string("description_step_5");
             $table->integer("points")->nullable();
             // $table->timestamp('challenge_completed')->nullable();
             $table->timestamps();
