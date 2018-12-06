@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ChallengesRequest;
 use App\Category;
 use App\Challenge;
+use Auth;
 
 class ChallengesController extends Controller
 {
@@ -15,6 +16,9 @@ class ChallengesController extends Controller
      */
     public function index()
     {
+
+      // $user_id = Auth::user()->id;
+
       $challenges = Challenge::orderBy("name")->paginate(10);
       $allChallenges = Challenge::all()->count();
       return view("challenges.index")->with(compact("challenges","allChallenges"));
@@ -37,7 +41,7 @@ class ChallengesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ChallengesRequest $request)
     {
       $challenge = new  Challenge;
       $this->saveData($request,$challenge);
@@ -76,7 +80,7 @@ class ChallengesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ChallengesRequest $request, $id)
     {
       $challenge = Challenge::find($id);
       $this->saveData($request,$challenge);
@@ -104,11 +108,7 @@ class ChallengesController extends Controller
     private function saveData($request,$challenge){
       $challenge->name = $request->name;
       $challenge->description = $request->description;
-      $challenge->step_1 = $request->step_1;
-      $challenge->step_2 = $request->step_2;
-      $challenge->step_3 = $request->step_3;
-      $challenge->step_4 = $request->step_4;
-      $challenge->step_5 = $request->step_5;
+      $challenge->metaChallenge = $request->metaChallenge;
       $challenge->category_id = $request->category_id;
       $challenge->save();
     }

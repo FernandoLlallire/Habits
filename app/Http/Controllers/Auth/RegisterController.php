@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'userName' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'country' => 'required',
+            'province' => 'string',
             'avatar' => 'required',
             'password' => 'required|string|min:4|confirmed',
         ]);
@@ -80,7 +81,6 @@ class RegisterController extends Controller
         		// Guardo el archivo en la carpeta
         		$file->storePubliclyAs("public/avatars", $name);
 
-
         return User::create([
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
@@ -89,6 +89,7 @@ class RegisterController extends Controller
             'country' => $data['country'],
             'avatar' => $name,
             'password' => Hash::make($data['password']),
+            'province' => $data['province'],
         ]);
 
     }

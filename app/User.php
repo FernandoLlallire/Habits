@@ -25,7 +25,7 @@ class User extends Authenticatable
       'password',
       'remember_token',
       'avatar',
-      'province'
+      'province',
     ];
 
     /**

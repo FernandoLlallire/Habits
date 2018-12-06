@@ -24,14 +24,10 @@ class ChallengesRequest extends FormRequest
     public function rules()
     {
         return [
-          'name' => 'requiered',
-          'description' => 'requiered',
-          'step_1' => 'requiered | numeric ',
-          'step_2' => 'requiered | numeric ',
-          'step_3' => 'requiered | numeric ',
-          'step_4' => 'requiered | numeric ',
-          'step_5' => 'requiered | numeric ',
-          'category_id' => 'requiered | numeric ',
+          'name' => 'required',
+          'description' => 'required',
+          'metaChallenge' => 'required | numeric ',
+          'category_id' => 'required | numeric ',
         ];
     }
     /**
@@ -42,18 +38,10 @@ class ChallengesRequest extends FormRequest
     public function messages()
     {
       return [
-        'name.required' => 'El nombre es obligatorio',
-        'description.required' => 'La description es obligatoria',
-        'step_1.required' => 'Ingrese un numero para el 2 paso',
-        'step_2.required' => 'Ingrese un numero para el 2 paso',
-        'step_3.required' => 'Ingrese un numero para el 2 paso',
-        'step_4.required' => 'Ingrese un numero para el 2 paso',
-        'step_5.required' => 'Ingrese un numero para el 2 paso',
-        'step_1.numeric' => 'El valor tiene que ser numerico',
-        'step_2.numeric' => 'El valor tiene que ser numerico',
-        'step_3.numeric' => 'El valor tiene que ser numerico',
-        'step_4.numeric' => 'El valor tiene que ser numerico',
-        'step_5.numeric' => 'El valor tiene que ser numerico',
+        'name.required' => 'El nombre del desafio es obligatorio',
+        'description.required' => 'La Actividad es obligatoria',
+        'metaChallenge.required' => 'Ingrese un una meta para el Desafio',
+        'metaChallenge.numeric' => 'la meta tiene que ser numerica',
       ];
     }
 }
