@@ -1,91 +1,93 @@
 @extends('layouts.app')
 @section('content')
 
-  <form method="post" action="{{route('challenges.update',$challenge->id)}}" enctype="multipart/form-data">
-    @csrf
-    {{ method_field('PUT') }}
-    <div class="form-element">
-      <label for="">Nombre: </label>
-      <input type="text" name="name" value="{{ old('title', $challenge->name) }}">
-      <br>
-    </div>
-    <div class="form-element">
-      <label for=""> descripción:  </label>
-      <input type="text" name="description" value="{{ old('title', $challenge->description) }}">
-      <br>
-    </div>
-    <div class="form-element">
-        <label>Categoria: </label>
-        <select class="form-element" name="category_id">
-          <option value="">Elegí una categoria</option>
-          @foreach ($categories as $category)
-            <option
-              value="{{ $category->id }}"
-              {{ $category->id == $challenge->category_id ? 'selected' : '' }}
-            >
-              {{ $category->name }}
-            </option>
-          @endforeach
-         </select>
-    </div>
-    <div class="form-element">
-      <label for=""> Primer Paso:  </label>
-      <input type="text" name="step_1" value="{{ old('title', $challenge->step_1) }}">
-      <br>
-    </div>
-    <div class="form-element">
-      <label for=""> Descripción Primer Paso:  </label>
-      <input type="text" name="description_step_1" value="{{ old('title', $challenge->description_step_1) }}">
-      <br>
-    </div>
+  {{-- <script src="{{ asset('js/challengeForm.js') }}"></script> --}}
+    {{-- enctype="multipart/form-data" esto es para que podamos pasarle como parametro una imagen al form!--}}
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header">Editando Desafio</div>
 
-    <div class="form-element">
-      <label for=""> Segundo Paso:  </label>
-      <input type="text" name="step_2" value="{{ old('title', $challenge->step_2) }}">
-      <br>
-    </div>
-    <div class="form-element">
-      <label for=""> Descripción Segundo Paso:  </label>
-      <input type="text" name="description_step_2" value="{{ old('title', $challenge->description_step_2) }}">
-      <br>
-    </div>
+                  <div class="card-body">
+                      <form id="formChallenge" method="POST" class="form" action="{{route('challenges.update',$challenge->id)}}" enctype="multipart/form-data" >
+                          @csrf
+                          {{ method_field('PUT') }}
 
-    <div class="form-element">
-      <label for=""> Tercer Paso:  </label>
-      <input type="text" name="step_3" value="{{ old('title', $challenge->step_3) }}">
-      <br>
-    </div>
-    <div class="form-element">
-      <label for=""> Descripción Tercer Paso:  </label>
-      <input type="text" name="description_step_3" value="{{ old('title', $challenge->description_step_3) }}">
-      <br>
-    </div>
+                          <div class="form-group row">
+                              <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre del Desafio') }}</label>
 
-    <div class="form-element">
-      <label for=""> Cuarto Paso:  </label>
-      <input type="text" name="step_4" value="{{ old('title', $challenge->step_4) }}">
-      <br>
-    </div>
-    <div class="form-element">
-      <label for=""> Descripción Cuarto Paso:  </label>
-      <input type="text" name="description_step_4" value="{{ old('title', $challenge->description_step_4) }}">
-      <br>
-    </div>
+                              <div class="col-md-6">
+                                  <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('title', $challenge->name) }}"  >
+                                  <span class="invalid-feedback" role="alert">
+                                  @if ($errors->has('name'))
+                                          <strong>{{ $errors->first('name') }}</strong>
+                                  @endif
+                                  </span>
+                              </div>
+                          </div>
 
-    <div class="form-element">
-      <label for=""> Quinto Paso:  </label>
-      <input type="text" name="step_5" value="{{ old('title', $challenge->step_5) }}">
-      <br>
-    </div>
-    <div class="form-element">
-      <label for=""> Descripción Quinto Paso:  </label>
-      <input type="text" name="description_step_5" value="{{ old('title', $challenge->description_step_5) }}">
-      <br>
-    </div>
-    <input type="submit" class="btn btn-primary" value="Actualizar">
-      <a href="/challenges" class="btn btn-warning">Volver</a>
-  </form>
+                          <div class="form-group row">
+                              <label for="description" class="col-md-4 col-form-label text-md-right">Actividad</label>
+
+                              <div class="col-md-6">
+                                  <input id="description" type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="{{ old('title', $challenge->description) }}"  >
+                                  <span class="invalid-feedback" role="alert">
+                                  @if ($errors->has('description'))
+                                          <strong>{{ $errors->first('description') }}</strong>
+                                  @endif
+                                  </span>
+                              </div>
+                          </div>
 
 
+                          <div class="form-group row countryDiv">
+                              <label for="country" class="col-md-4 col-form-label text-md-right">Categoria</label>
 
+                              <div class="col-md-6">
+                                  <select id="category_id" type="text" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" >
+                                    @foreach ($categories as $category)
+                                      <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                  </select>
+                                  <span class="invalid-feedback" role="alert">
+                                  @if ($errors->has('category_id'))
+                                          <strong>{{ $errors->first('category_id') }}</strong>
+                                  @endif
+                                  </span>
+                              </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="metaChallenge" class="col-md-4 col-form-label text-md-right">Meta </label>
+                            <div class="col-md-6">
+                                <input id="metaChallenge" type="text" class="form-control{{ $errors->has('metaChallenge') ? ' is-invalid' : '' }}" name="metaChallenge" value="{{ old('title', $challenge->metaChallenge) }}" >
+                                <span class="invalid-feedback" role="alert">
+                                @if ($errors->has('metaChallenge'))
+                                        <strong>{{ $errors->first('metaChallenge') }}</strong>
+                                @endif
+                                </span>
+                            </div>
+                          </div>
+
+                      <div class="form-group row mb-0">
+
+                              <div class="col-md-4 offset-md-4">
+                                  <button type="submit" class="btn btn-primary">
+                                      Guardar
+                                  </button>
+                                  <button type="submit info" class="btn btn-secondary">
+                                      Vovler
+                                  </button>
+                              </div>
+
+                          </div>
+                          {{--   @foreach ($categories as $category)
+                              <option
+                                value="{{ $category->id }}"
+                                {{ $category->id == $challenge->category_id ? 'selected' : '' }}
+                              >
+                                {{ $category->name }}
+                              </option>
+                            @endforeach --}}
 @endsection
