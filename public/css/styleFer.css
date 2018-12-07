@@ -1,0 +1,9 @@
+@import url("app.css");
+body{
+  background-image: url("../images/bg.jpg");
+   background-size: cover;
+}
+.navbar-brand{
+  font-family: 'Indie Flower', cursive;
+  size: 2em;
+}

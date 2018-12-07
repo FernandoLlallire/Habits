@@ -110,6 +110,7 @@ class ChallengesController extends Controller
       $challenge->description = $request->description;
       $challenge->metaChallenge = $request->metaChallenge;
       $challenge->category_id = $request->category_id;
+      $challenge->user_id = Auth::user()->id;
       $challenge->save();
     }
 }
