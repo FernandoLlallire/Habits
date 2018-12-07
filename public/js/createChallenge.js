@@ -5,7 +5,7 @@ window.onload = function () {
   var campos = formulario.elements; //obtengo todos los elementos html de mi object html pertenecientes al formulario!!
   campos = Array.from(campos);
   campos.pop();//hay que sacar el boton del submit
-  campos.pop();//hay que sacar el boto volver
+  // campos.pop();//hay que sacar el boto volver
   const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
   const regexNumbers = /^\d+$/;
 

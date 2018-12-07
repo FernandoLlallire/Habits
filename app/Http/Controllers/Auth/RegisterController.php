@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'country' => 'required',
             'province' => 'string',
-            'avatar' => 'required|mimes:jpeg,jpg,png',
+            'avatar' => 'mimes:jpeg,jpg,png',
             'password' => 'required|string|min:4|confirmed',
         ]);
     }
@@ -68,7 +68,9 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {     $name="images/default.png";
+          if(!empty($data['avatar'])){
+            // $province = null;
       // Necesito el archivo en una variable esta vez
         		$file = $data["avatar"];
 
@@ -80,7 +82,10 @@ class RegisterController extends Controller
 
         		// Guardo el archivo en la carpeta
         		$file->storePubliclyAs("public/avatars", $name);
-
+          }
+            if(empty($data['province'])){
+              $data['province'] = null;
+            }
         return User::create([
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],

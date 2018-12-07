@@ -1,5 +1,5 @@
 window.onload = function () {
-  var formulario = document.getElementsByTagName("form")[0];
+  var formulario = document.querySelector(".formCreateUser");
   var campos = formulario.elements; //obtengo todos los elementos html de mi object html pertenecientes al formulario!!
   campos = Array.from(campos);
   campos.pop();//hay que sacar el boton del submit
@@ -77,14 +77,12 @@ window.onload = function () {
       campoUserName.value.trim() === '' ||
       campoEmail.value.trim() === '' ||
       campoPassword.value.trim() === '' ||
-      campoCountry.value.trim() === '' ||
-      campoAvatar.value.trim() === ''
+      campoCountry.value.trim() === ''
     ) {
         e.preventDefault();
       // alert();
       campos.forEach(function (campo) {
         var error = campo.parentElement.querySelector('.invalid-feedback');
-        console.log(error);
         var nombreCampo = campo.parentElement.parentElement.querySelector('label').innerText;
         if (campo.value.trim() === '') {
           campo.classList.add('is-invalid');

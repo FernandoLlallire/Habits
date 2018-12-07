@@ -4,8 +4,9 @@
 
 @section('content')
 <section class="container">
-
-<h1 class="textFontHabits">Habits</h1>
+<div class="row justify-content-center">
+  <h1 class="textFontHabits brandInPage">Habits</h1>
+</div>
 <section class="container">
   <div class="row">
     <div class="col-sm">

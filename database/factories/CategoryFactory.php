@@ -7,8 +7,8 @@ $factory->define(App\Category::class, function (Faker $faker) {
       'name' => $faker->unique()->randomElement([
   			'Alimentacion',
   			'Actividad Fisica',
-  			'Horas de Sueño',
-  			'Fumar',
+  			'Cantidad de Horas de Sueño',
+  			'Dejar de Fumar',
   			'Lectura',
   		]),
     ];

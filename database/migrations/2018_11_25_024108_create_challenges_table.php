@@ -18,8 +18,8 @@ class CreateChallengesTable extends Migration
             $table->string("name");
             $table->string("description");
             $table->integer("metaChallenge");
-            $table->integer("points")->nullable();
-            $table->boolean("finish")->nullable();
+            $table->integer("points")->nullable()->default("0");
+            $table->boolean("finish")->nullable()->default("0");
             // $table->timestamp('challenge_completed')->nullable();
             $table->timestamps();
         });

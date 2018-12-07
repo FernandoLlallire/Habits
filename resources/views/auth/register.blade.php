@@ -9,7 +9,7 @@
                 <div class="card-header">Nuevo Usuario</div>
 
                 <div class="card-body">
-                    <form method="POST" class="form" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" class="form formCreateUser" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">

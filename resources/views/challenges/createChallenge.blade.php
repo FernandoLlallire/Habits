@@ -71,7 +71,7 @@
                       <div class="form-group row mb-0">
 
                               <div class="col-md-4 offset-md-4">
-                                  <button type="submit" class="btn btn-primary">
+                                  <button type="submit" class="btn btn-primary mr-4">
                                       Guardar
                                   </button>
                                   <a class="btn btn-secondary" href="{{ route('user.show',Auth::user()->id) }}">

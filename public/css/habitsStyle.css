@@ -7,6 +7,9 @@ body{
   font-family: 'Indie Flower', cursive;
       /* font-family: 'Dancing Script', cursive; */
 }
+.brandInPage{
+  font-size: 5em;
+}
 .navbarTextSize{
   font-size: 1.1em;
 }
@@ -39,4 +42,20 @@ footer {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+}
+/*https://stackoverflow.com/questions/48373119/change-bootstrap-4-checkbox-background-color
+Groso!!1 editar el color del checkbox pero ojo q es para todos....*/
+.custom-control-label:before{
+  background-color:grey;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+  background-color:grey;
+}
+.iconHabits{
+  height: 1.3em;
+  width: 1.3em;
+}
+.carrouselSize{
+  height: 500px!important;
+  overflow: hidden;
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ChallengesRequest;
+use App\Http\Requests\ChallengesCreateRequest;
 use App\Http\Requests\ChallengesEditRequest;
 use App\Category;
 use App\Challenge;
@@ -42,7 +42,7 @@ class ChallengesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ChallengesEditRequest $request)
+    public function store(ChallengesCreateRequest $request)
     {
       $challenge = new  Challenge;
       $this->saveData($request,$challenge);
@@ -82,8 +82,9 @@ class ChallengesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ChallengesRequest $request, $id)
+    public function update(ChallengesEditRequest $request, $id)
     {
+      // dd($request);
       $challenge = Challenge::find($id);
       $this->saveData($request,$challenge);
       return redirect(route("user.show",Auth::user()->id));
@@ -117,6 +118,7 @@ class ChallengesController extends Controller
       if ($request->points) {
         $challenge->points=$request->points;
       }
+       $challenge->finish = ($request->finish) ? 1 : 0; // por que es un tinyint
       $challenge->save();
     }
 }

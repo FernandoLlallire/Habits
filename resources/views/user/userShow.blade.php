@@ -31,18 +31,27 @@
       <div class="col-sm-6">
         <div class="card bg-transparent boxCardHabits">
           <div class="card-header boxCardHabits font-weight-bold">
-            {{$challenge->name}}
+            Desafio : {{$challenge->name}}
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{$challenge->description}}</h5>
-            <p class="card-text">{{$challenge->metaChallenge}}</p>
-            <p class="card-text">provando el tema de la cateogria {{$challenge->category->name}}</p>
-            <a href="{{route('challenges.edit',$challenge->id)}}" class="btn btn-warning">Editar</a>
-            <form action="{{ route('challenges.delete', $challenge->id) }}" method="post" style="display: inline-block;">
-              @csrf
-              {{ method_field('DELETE') }}
-              <button type="submit" class="btn btn-danger">Borrar</button>
-            </form>
+            <h5 class="card-title"> Actividad : {{$challenge->description}}</h5>
+            <p class="card-text"> Meta estipulada : {{$challenge->metaChallenge}}</p>
+            <p class="card-text"> Categoria : {{$challenge->category->name}}</p>
+            <p class="card-text"> Estado del Desafio : {{$challenge->category->points}}</p>
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <a href="{{route('challenges.edit',$challenge->id)}}" class="btn btn-warning mr-4">Editar</a>
+              <form action="{{ route('challenges.delete', $challenge->id) }}" method="post" style="display: inline-block;">
+                @csrf
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-danger mr-5">Borrar</button>
+              </form>
+              @if ($challenge->finish == 1)
+                <img src="{{asset('images/ok.png')}}" class="iconHabits" >
+                <p class="text-right d-inline-block text-success">Desafio Finalizado</p>
+              @endif
+            </div>
+
           </div>
         </div>
       </div>

@@ -81,10 +81,18 @@
                                 </span>
                             </div>
                           </div>
+{{-- <input type="checkbox" name="asdasd"> --}}
+                          <div class="form-group row justify-content-center">
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input " id="customCheckhabits" name="finish" >
+                              <label class="custom-control-label" for="customCheckhabits">Finalizar Desafio</label>
+                            </div>
+                          </div>
+
                       <div class="form-group row mb-0">
 
                               <div class="col-md-4 offset-md-4">
-                                  <button type="submit" class="btn btn-primary">
+                                  <button type="submit" class="btn btn-primary mr-4">
                                       Guardar
                                   </button>
                                   <a class="btn btn-secondary" href="{{ route('user.show',Auth::user()->id) }}">
