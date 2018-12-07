@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Edicion Perfil')
 @section('content')
   <script src="{{ asset('js/editUser.js') }}"></script>
 <div class="container">

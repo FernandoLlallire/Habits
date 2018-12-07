@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
+@section('title', 'Perfil')
 @section('content')
   {{-- @php
      dd($user->challenges[0]->name);
   @endphp --}}
   <div class="row justify-content-center">
-    <div class="col-sm-8 "><h1>Bienvenido {{$user->firstName}}</h1></div>
+    <div class="col-sm-8 textFontHabits"><h1>Bienvenido {{$user->firstName}}</h1></div>
   </div>
   <div class="row justify-content-center">
     <div class="col-sm-8 "> <p>Este es tu perfil desde aca  vas a poder ver todos tus desafios</p> </div>

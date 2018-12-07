@@ -1,6 +1,7 @@
 @extends('layouts.app')
-@section('content')
 
+@section('title', 'Edicion de Desafio')
+@section('content')
   <script src="{{ asset('js/editChallenge.js') }}"></script>
     {{-- enctype="multipart/form-data" esto es para que podamos pasarle como parametro una imagen al form!--}}
   <div class="container">
