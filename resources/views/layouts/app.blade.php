@@ -16,6 +16,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+{{-- <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/simple-line-icons.css') }}" rel="stylesheet"> --}}
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styleFer.css') }}" rel="stylesheet">
@@ -25,10 +28,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel Transparent">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <span class="navbarTextSize">Habits</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -45,20 +48,26 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Logear</a>
                             </li>
                             <li class="nav-item">
                                 @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">Registrar</a>
                                 @endif
                             </li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->firstName }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{{ route('user.show',Auth::user()->id) }}">
+                                      Perfil
+                                  </a>
+                                  <a class="dropdown-item" href="{{ route('user.edit',Auth::user()->id) }}">
+                                      Editar Usuario
+                                  </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -79,6 +88,36 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="footer transparent col-lg-12">
+          <div class="container">
+            <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item mr-3">
+                  <a href="#">
+                    <i class="fab fa-facebook fa-2x fa-fw"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item mr-3">
+                  <a href="#">
+                    <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fab fa-instagram fa-2x fa-fw"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+              </div>
+              <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+                <p class="text-muted small mb-4 mb-lg-0">&copy; Habits - Fernando Llallire 2018 - All Rights Reserved.</p>
+              </div>
+            </div>
+          </div>
+        </footer>
     </div>
 </body>
 </html>

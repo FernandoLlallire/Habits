@@ -1,6 +1,7 @@
 window.onload = function () {
 
-  var formulario = document.getElementsByTagName("form")[0];
+  
+  var formulario = document.querySelector(".formNuevoDesafio");
   var campos = formulario.elements; //obtengo todos los elementos html de mi object html pertenecientes al formulario!!
   campos = Array.from(campos);
   campos.pop();//hay que sacar el boton del submit
@@ -10,6 +11,7 @@ window.onload = function () {
 
   var campoName = formulario.name;
   var campoDescription = formulario.description;
+
   var campoMetaChallenge = formulario.metaChallenge;
 
   function validateEmpty () {

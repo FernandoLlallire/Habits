@@ -45,9 +45,10 @@ class User extends Authenticatable
     public function followers() {
       return $this->belongsToMany(User::class, 'friends', 'following_id', 'follower_id');
     }
-
+/*Le saque todos los parametros por que rompia, revizar el tema de las relaciones especificando las columnas
+De esta manera como sigo la convencion de laravel no tengo q tener problema!!!!*/
     public function challenges(){
-      return $this->hasMany(Challenge::class, "challenges", "id", "challenge_id");
+      return $this->hasMany(Challenge::class);
     }
 
 }

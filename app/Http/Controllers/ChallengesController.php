@@ -32,7 +32,7 @@ class ChallengesController extends Controller
     public function create()
     {
       $categories = Category::orderBy('name')->get();
-      return view("challenges.form")->with(compact("categories"));
+      return view("challenges.createChallenge")->with(compact("categories"));
     }
 
     /**
@@ -45,7 +45,8 @@ class ChallengesController extends Controller
     {
       $challenge = new  Challenge;
       $this->saveData($request,$challenge);
-      return redirect("/challenges");
+       $userID = Auth::user()->id;
+      return redirect("/user/".$userID);
     }
 
     /**

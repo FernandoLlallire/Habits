@@ -5,10 +5,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card Transparent">
                 <div class="card-header">Edicion de Usuario</div>
 
-                <div class="card-body">
+                <div class="card-body ">
                     <form method="POST" class="form" action="{{ route('user.update',Auth::user()->id) }}" enctype="multipart/form-data">
                         @csrf
                         {{ method_field('PUT')}}
@@ -118,6 +118,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Actualizar
                                 </button>
+                                <a class="btn btn-secondary" href="{{ route('user.show',Auth::user()->id) }}">
+                                    Volver
+                                </a>
                             </div>
                         </div>
                     </form>
@@ -126,4 +129,5 @@
         </div>
     </div>
 </div>
+<br>
 @endsection

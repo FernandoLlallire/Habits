@@ -1,185 +1,82 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+@section('content')
+<section class="container">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+<h1>Habits</h1>
+<section class="container">
+  <div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-8">
+      <p>Cada vez que iniciás un desafío, empezás a competir contra vos mismo y con otros que tengan tu mismo propósito.
+      Cada objetivo que logres para llegar a tu meta te da puntos que te hacen subir de nivel.
+      ¡Preparate para lograr lo que quieras de la manera más divertida!</p>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</section>
+  <br>
+  <br>
 
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styleFer.css') }}" rel="stylesheet">
-    @if (Auth::user()->theme)
-      <link href="{{ asset('css/theme-' . Auth::user()->theme . '.css') }}" rel="stylesheet">
-    @endif
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background: transparent;">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                  Habits
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Logear</a>
-                            </li>
-                            <li class="nav-item">
-                                @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">Registrar</a>
-                                @endif
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->firstName }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-          <section class="p-0" id="portfolio">
-            <div class="container-fluid p-0">
-              <div class="row no-gutters popup-gallery">
-                <div class="col-lg-4 col-sm-6">
-                  <a class="portfolio-box" href="../../public/images/food.jpg">
-                    <img class="img-fluid" src="../../public/images/food.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                          Category
-                        </div>
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                  <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
-                    <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                          Category
-                        </div>
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                  <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
-                    <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                          Category
-                        </div>
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                  <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
-                    <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                          Category
-                        </div>
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                  <a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
-                    <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                          Category
-                        </div>
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                  <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
-                    <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                          Category
-                        </div>
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-            @yield('content')
-        </main>
+<section class="container">
+  <div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active ">
+            <img class="d-block w-100 imgCarrousel " src="{{ asset('images/food.jpg') }}" alt="First slide">
+          </div>
+          <div class="carousel-item ">
+            <img class="d-block w-100 imgCarrousel " src="{{ asset('images/read.jpg') }}" alt="Second slide">
+          </div>
+          <div class="carousel-item ">
+            <img class="d-block w-100 imgCarrousel " src="{{ asset('images/running.jpg') }}" alt="Third slide">
+          </div>
+          <div class="carousel-item ">
+            <img class="d-block w-100 imgCarrousel maxSize" src="{{ asset('images/smok.jpg') }}" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
     </div>
 
+  </div>
 
+</section>
+  @endsection
+{{--
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+      <p>Habits</p>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
 
-</body>
-</html>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    You are logged in!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection--}}

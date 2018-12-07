@@ -1,7 +1,7 @@
 @extends ("layouts.app")
 
 @section('content')
-  
+
     @if ( session('errorDeleted') )
   		<div class="alert alert-danger">
   		  {{ session('errorDeleted') }}

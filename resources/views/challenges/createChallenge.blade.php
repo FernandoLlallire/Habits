@@ -5,11 +5,11 @@
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-8">
-              <div class="card">
+              <div class="card Transparent">
                   <div class="card-header">Nuevo Desafio</div>
 
                   <div class="card-body">
-                      <form id="formChallenge" method="POST" class="form" action="{{ route('challenges.store') }}" enctype="multipart/form-data" >
+                      <form id="formChallenge" method="POST" class="form formNuevoDesafio" action="{{ route('challenges.store') }}" enctype="multipart/form-data" >
                           @csrf
 
                           <div class="form-group row">
@@ -74,9 +74,9 @@
                                   <button type="submit" class="btn btn-primary">
                                       Guardar
                                   </button>
-                                  <button type="submit info" class="btn btn-secondary">
-                                      Vovler
-                                  </button>
+                                  <a class="btn btn-secondary" href="{{ route('user.show',Auth::user()->id) }}">
+                                      Volver
+                                  </a>
                               </div>
 
                           </div>
