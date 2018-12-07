@@ -27,4 +27,7 @@ Route::get("/challenges/{id}/edit","ChallengesController@edit")->name("challenge
 Route::get("/challenges/{id}","ChallengesController@show")->name("challenges.show");
 Route::put("/challenges/{id}","ChallengesController@update")->name("challenges.update");
 Route::delete("/challenges/{id}","ChallengesController@destroy")->name("challenges.delete");
+Route::get("/user/{id}/edit","UserController@edit")->name("user.edit");
+Route::get("/user/{id}","UserController@show")->name("user.show");
+Route::put("/user/{id}","UserController@update")->name("user.update");
 });

@@ -19,9 +19,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styleFer.css') }}" rel="stylesheet">
-    @if (Auth::user()->theme)
+    {{-- @if (Auth::user()->theme)
       <link href="{{ asset('css/theme-{{ Auth::user()->theme }}.css') }}" rel="stylesheet">
-    @endif
+    @endif --}}
 </head>
 <body>
     <div id="app">

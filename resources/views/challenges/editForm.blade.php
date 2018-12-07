@@ -12,7 +12,7 @@
                   <div class="card-body">
                       <form id="formChallenge" method="POST" class="form" action="{{route('challenges.update',$challenge->id)}}" enctype="multipart/form-data" >
                           @csrf
-                          {{ method_field('PUT') }}
+                          {{ method_field('PUT')}}
 
                           <div class="form-group row">
                               <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre del Desafio') }}</label>
