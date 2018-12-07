@@ -68,7 +68,7 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {     $name="images/default.png";
+    {     $name="default.png";
           if(!empty($data['avatar'])){
             // $province = null;
       // Necesito el archivo en una variable esta vez

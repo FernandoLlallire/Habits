@@ -37,7 +37,7 @@
             <h5 class="card-title"> Actividad : {{$challenge->description}}</h5>
             <p class="card-text"> Meta estipulada : {{$challenge->metaChallenge}}</p>
             <p class="card-text"> Categoria : {{$challenge->category->name}}</p>
-            <p class="card-text"> Estado del Desafio : {{$challenge->category->points}}</p>
+            <p class="card-text"> Estado del Desafio : {{$challenge->points}}</p>
             <div class="row">
               <div class="col-sm-1"></div>
               <a href="{{route('challenges.edit',$challenge->id)}}" class="btn btn-warning mr-4">Editar</a>

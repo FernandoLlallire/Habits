@@ -48,7 +48,7 @@ class UserController extends Controller
     {
       $user = User::findOrFail($id);
       $challenges = $user->challenges()->orderBy('id', 'desc')->paginate(3);
-  		return view('user.usershow')->with(compact('user','challenges'));//solo mando al user despues puedo llamar a las cosas que tenga por la relacion en la vista
+  		return view('user.userShow')->with(compact('user','challenges'));//solo mando al user despues puedo llamar a las cosas que tenga por la relacion en la vista
     }
 
     /**
