@@ -3,7 +3,7 @@ body{
   background-image: url("../images/bg.jpg");
    background-size: cover;
 }
-.navbar-brand{
+.textFontHabits{
   font-family: 'Indie Flower', cursive;
       /* font-family: 'Dancing Script', cursive; */
 }
@@ -32,4 +32,11 @@ footer {
 /*Para el footer en el pie de pagina*/
 .maxSize{
   width: 500px;
+}
+.sizeImgHabits{
+  height: 3em;
+  width: 3em;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }

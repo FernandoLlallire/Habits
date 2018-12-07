@@ -47,7 +47,8 @@ class UserController extends Controller
     public function show($id)
     {
       $user = User::findOrFail($id);
-  		return view('user.usershow')->with(compact('user'));//solo mando al user despues puedo llamar a las cosas que tenga por la relacion en la vista
+      $challenges = $user->challenges()->orderBy('id', 'desc')->paginate(3);
+  		return view('user.usershow')->with(compact('user','challenges'));//solo mando al user despues puedo llamar a las cosas que tenga por la relacion en la vista
     }
 
     /**

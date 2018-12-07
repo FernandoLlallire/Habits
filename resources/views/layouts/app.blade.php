@@ -21,17 +21,31 @@
 <link href="{{ asset('css/simple-line-icons.css') }}" rel="stylesheet"> --}}
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styleFer.css') }}" rel="stylesheet">
-    {{-- @if (Auth::user()->theme)
+    <link href="{{ asset('css/habitsStyle.css') }}" rel="stylesheet">
+    @if (Auth::user())
+      @if (Auth::user()->theme === "dark")
+        <link href="{{ asset('css/theme-'. Auth::user()->theme. '.css') }}" rel="stylesheet">
+      @endif
+      @if (Auth::user()->theme === "light")
+        <link href="{{ asset('css/theme-'. Auth::user()->theme. '.css') }}" rel="stylesheet">
+      @endif
+      @if (Auth::user()->theme === "pink")
+        <link href="{{ asset('css/theme-'. Auth::user()->theme. '.css') }}" rel="stylesheet">
+      @endif
+    @endif
+    {{-- @if (Auth::user()->theme === "light")
+      <link href="{{ asset('css/theme- Auth::user()->theme .css') }}" rel="stylesheet">
+    @endif
+    @if (Auth::user()->theme === "pink")
       <link href="{{ asset('css/theme-{{ Auth::user()->theme }}.css') }}" rel="stylesheet">
-    @endif --}}
-</head>
+    @endif
+</head> --}}
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel Transparent">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel Transparent colorWhite">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <span class="navbarTextSize">Habits</span>
+                    <span class="navbarTextSize colorWhite textFontHabits">Habits</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -44,20 +58,21 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto colorWhite">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Logear</a>
+                                <a class="nav-link colorWhite" href="{{ route('login') }}">Logear</a>
                             </li>
                             <li class="nav-item">
                                 @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">Registrar</a>
+                                    <a class="nav-link colorWhite" href="{{ route('register') }}">Registrar</a>
                                 @endif
                             </li>
                         @else
+
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle colorWhite" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->firstName }} <span class="caret"></span>
                                 </a>
 
@@ -79,6 +94,7 @@
                                     </form>
                                 </div>
                             </li>
+                              <img src="{{asset('storage/avatars/'.Auth::user()->avatar) }}" alt="" class="rounded-circle sizeImgHabits">
                         @endguest
                     </ul>
                 </div>
@@ -88,6 +104,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <br><br>
         <footer class="footer transparent col-lg-12">
           <div class="container">
             <div class="col-lg-6 h-100 text-center text-lg-right my-auto">

@@ -5,8 +5,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card Transparent">
-                <div class="card-header">Edicion de Usuario</div>
+            <div class="card Transparent boxCardHabits">
+                <div class="card-header boxCardHabits font-weight-bold">Edicion de Usuario</div>
 
                 <div class="card-body ">
                     <form method="POST" class="form" action="{{ route('user.update',Auth::user()->id) }}" enctype="multipart/form-data">
@@ -87,9 +87,9 @@
                             <div class="col-md-6">
                                 <select id="theme" type="text" class="form-control{{ $errors->has('theme') ? ' is-invalid' : '' }}" name="theme" >
                                   <option value="">Default</option>
-                                  <option value="Dark">Dark</option>
-                                  <option value="Light">Light</option>
-                                  <option value="Pink">Pink</option>
+                                  <option value="dark">Dark</option>
+                                  <option value="light">Light</option>
+                                  <option value="pink">Pink</option>
                                 </select>
                                 <span class="invalid-feedback" role="alert">
                                 @if ($errors->has('theme'))

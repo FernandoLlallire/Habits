@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
-  <script src="{{ asset('js/challengeForm.js') }}"></script>
+  <script src="{{ asset('js/createChallenge.js') }}"></script>
     {{-- enctype="multipart/form-data" esto es para que podamos pasarle como parametro una imagen al form!--}}
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-8">
-              <div class="card Transparent">
-                  <div class="card-header">Nuevo Desafio</div>
+              <div class="card Transparent boxCardHabits">
+                  <div class="card-header boxCardHabits font-weight-bold">Nuevo Desafio</div>
 
                   <div class="card-body">
                       <form id="formChallenge" method="POST" class="form formNuevoDesafio" action="{{ route('challenges.store') }}" enctype="multipart/form-data" >

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ChallengesRequest extends FormRequest
+class ChallengesEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,6 @@ class ChallengesRequest extends FormRequest
           'description' => 'required',
           'metaChallenge' => 'required | numeric ',
           'category_id' => 'required | numeric ',
-          'points' => 'required | numeric ',
         ];
     }
     /**
@@ -43,7 +42,6 @@ class ChallengesRequest extends FormRequest
         'description.required' => 'La Actividad es obligatoria',
         'metaChallenge.required' => 'Ingrese un una meta para el Desafio',
         'metaChallenge.numeric' => 'La Meta tiene que ser numerica',
-        'points.numeric' => 'Estado Actual tiene que ser un valor numerico',
       ];
     }
 }

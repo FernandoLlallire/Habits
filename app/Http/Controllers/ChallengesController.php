@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChallengesRequest;
+use App\Http\Requests\ChallengesEditRequest;
 use App\Category;
 use App\Challenge;
 use Auth;
@@ -41,7 +42,7 @@ class ChallengesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ChallengesRequest $request)
+    public function store(ChallengesEditRequest $request)
     {
       $challenge = new  Challenge;
       $this->saveData($request,$challenge);
@@ -71,7 +72,7 @@ class ChallengesController extends Controller
     {
       $challenge = Challenge::findOrFail($id);
       $categories = Category::orderby("name")->get();
-      return view("challenges.editForm")->with(compact("challenge","categories"));
+      return view("challenges.editChallenge")->with(compact("challenge","categories"));
     }
 
     /**
@@ -85,7 +86,7 @@ class ChallengesController extends Controller
     {
       $challenge = Challenge::find($id);
       $this->saveData($request,$challenge);
-      return redirect("/challenges");
+      return redirect(route("user.show",Auth::user()->id));
     }
 
     /**
@@ -99,19 +100,23 @@ class ChallengesController extends Controller
       try {
         $challenge = Challenge::findorfail($id);
         $challenge->delete();
-        return redirect(route("challenges.index"))->with("deleted","Challenge deleted");
+        return redirect(route("user.show",Auth::user()->id))->with("deleted","Challenge deleted");
       } catch (\Exception $e) {
-        return redirect(route("challenges.show",$id))->with("errorDeleted","Cant deleted the Challenge");
+        return redirect(route("user.show",Auth::user()->id))->with("errorDeleted","Cant deleted the Challenge");
       }
 
     }
 
     private function saveData($request,$challenge){
+      // dd($request);
       $challenge->name = $request->name;
       $challenge->description = $request->description;
       $challenge->metaChallenge = $request->metaChallenge;
       $challenge->category_id = $request->category_id;
       $challenge->user_id = Auth::user()->id;
+      if ($request->points) {
+        $challenge->points=$request->points;
+      }
       $challenge->save();
     }
 }

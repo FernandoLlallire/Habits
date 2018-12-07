@@ -1,4 +1,11 @@
 body{
-  background: tomato;
-  color: white;
+  background-image: url("../images/dark.jpg");
+   background-size: cover;
+   color: white;
+}
+.colorWhite{
+  color: white!important;
+}
+.boxCardHabits{
+  border: 1px solid white;
 }

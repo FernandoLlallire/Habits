@@ -1,0 +1,9 @@
+body{
+  background-image: url("../images/light.jpg");
+   background-size: cover;
+   /* color: white; */
+}
+
+.boxCardHabits{
+  border: 1px solid black;
+}

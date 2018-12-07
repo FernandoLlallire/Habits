@@ -1,6 +1,6 @@
 window.onload = function () {
 
-  
+
   var formulario = document.querySelector(".formNuevoDesafio");
   var campos = formulario.elements; //obtengo todos los elementos html de mi object html pertenecientes al formulario!!
   campos = Array.from(campos);
@@ -11,9 +11,8 @@ window.onload = function () {
 
   var campoName = formulario.name;
   var campoDescription = formulario.description;
-
   var campoMetaChallenge = formulario.metaChallenge;
-
+  var campoPoints = formulario.points;
   function validateEmpty () {
     var error = this.parentElement.querySelector('.invalid-feedback');
     var nombreCampo = this.parentElement.parentElement.querySelector('label').innerText;
@@ -40,19 +39,39 @@ window.onload = function () {
       this.classList.remove('is-invalid');
     }
   }
+  function validateEmptyAndNumberAndLess () {
+    // alert();
+    var error = this.parentElement.querySelector('.invalid-feedback');
+    var nombreCampo = this.parentElement.parentElement.querySelector('label').innerText;
+    if (this.value.trim() === '') {
+      this.classList.add('is-invalid');
+      error.innerText = 'El campo ' + nombreCampo + ' es obligatorio';
+    } else if (!regexNumbers.test(this.value.trim())) {
+      this.classList.add('is-invalid');
+      error.innerText = 'El desafio solo puede ser un numero';
+    } else if (parseInt(campoPoints.value)>parseInt(campoMetaChallenge.value)) {
+      this.classList.add('is-invalid');
+      error.innerText = 'No puede ingresar un valor mayo al de la Meta';
+    } else {
+      error.innerText = '';
+      this.classList.remove('is-invalid');
+    }
+  }
+
   campoMetaChallenge.addEventListener('blur', validateEmptyAndNumber);
   campoName.addEventListener('blur', validateEmpty);
   campoDescription.addEventListener('blur', validateEmpty);
+  campoPoints.addEventListener('blur', validateEmptyAndNumberAndLess);
 
   formulario.addEventListener("submit", function(e){
     if(
       campoName.value.trim() === '' ||
       campoDescription.value.trim() === '' ||
-      campoStep_1.value.trim() === '' ||
-      campoStep_2.value.trim() === '' ||
-      campoStep_3.value.trim() === '' ||
-      campoStep_4.value.trim() === '' ||
-      campoStep_5.value.trim() === ''
+      campoMetaChallenge.value.trim() === '' ||
+      campoPoints.value.trim() === '' ||
+      !regexNumbers.test(campoMetaChallenge.value.trim())||
+      !regexNumbers.test(campoPoints.value.trim())||
+      parseInt(campoPoints.value)>parseInt(campoMetaChallenge.value)
     ) {
         e.preventDefault();
       // alert();

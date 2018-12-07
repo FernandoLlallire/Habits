@@ -5,7 +5,7 @@
 @section('content')
 <section class="container">
 
-<h1>Habits</h1>
+<h1 class="textFontHabits">Habits</h1>
 <section class="container">
   <div class="row">
     <div class="col-sm">

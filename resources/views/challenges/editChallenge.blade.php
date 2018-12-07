@@ -1,16 +1,16 @@
 @extends('layouts.app')
 @section('content')
 
-  {{-- <script src="{{ asset('js/challengeForm.js') }}"></script> --}}
+  <script src="{{ asset('js/editChallenge.js') }}"></script>
     {{-- enctype="multipart/form-data" esto es para que podamos pasarle como parametro una imagen al form!--}}
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-8">
-              <div class="card">
-                  <div class="card-header">Editando Desafio</div>
+              <div class="card boxCardHabits Transparent">
+                  <div class="card-header boxCardHabits font-weight-bold">Editando Desafio</div>
 
                   <div class="card-body">
-                      <form id="formChallenge" method="POST" class="form" action="{{route('challenges.update',$challenge->id)}}" enctype="multipart/form-data" >
+                      <form id="formChallenge" method="POST" class="form formNuevoDesafio" action="{{route('challenges.update',$challenge->id)}}" enctype="multipart/form-data" >
                           @csrf
                           {{ method_field('PUT')}}
 
@@ -61,7 +61,7 @@
                           <div class="form-group row">
                             <label for="metaChallenge" class="col-md-4 col-form-label text-md-right">Meta </label>
                             <div class="col-md-6">
-                                <input id="metaChallenge" type="text" class="form-control{{ $errors->has('metaChallenge') ? ' is-invalid' : '' }}" name="metaChallenge" value="{{ old('title', $challenge->metaChallenge) }}" >
+                                <input id="metaChallenge" type="text" class="form-control{{ $errors->has('metaChallenge') ? ' is-invalid' : '' }}" name="metaChallenge" value="{{ old('metaChallenge', $challenge->metaChallenge) }}" >
                                 <span class="invalid-feedback" role="alert">
                                 @if ($errors->has('metaChallenge'))
                                         <strong>{{ $errors->first('metaChallenge') }}</strong>
@@ -70,15 +70,26 @@
                             </div>
                           </div>
 
+                          <div class="form-group row">
+                            <label for="points" class="col-md-4 col-form-label text-md-right"> Estado Actual </label>
+                            <div class="col-md-6">
+                                <input id="points" type="number" class="form-control{{ $errors->has('points') ? ' is-invalid' : '' }}" name="points" value="{{ old('points', $challenge->points) }}" >
+                                <span class="invalid-feedback" role="alert">
+                                @if ($errors->has('points'))
+                                        <strong>{{ $errors->first('points') }}</strong>
+                                @endif
+                                </span>
+                            </div>
+                          </div>
                       <div class="form-group row mb-0">
 
                               <div class="col-md-4 offset-md-4">
                                   <button type="submit" class="btn btn-primary">
                                       Guardar
                                   </button>
-                                  <button type="submit info" class="btn btn-secondary">
-                                      Vovler
-                                  </button>
+                                  <a class="btn btn-secondary" href="{{ route('user.show',Auth::user()->id) }}">
+                                      Volver
+                                  </a>
                               </div>
 
                           </div>
