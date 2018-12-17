@@ -11,7 +11,7 @@
 {{-- {{ config('app.name', 'Laravel') }} --}}
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/logIn.js') }}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -69,19 +69,19 @@
                               <div class="form-row">
                                 <div class="col">
                                   <input class="form-control form-control-sm {{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ old('email') }}" placeholder="E-mail">
-                                  @if ($errors->has('email'))
-                                      <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $errors->first('email') }}</strong>
-                                      </span>
-                                  @endif
+                                  <span class="invalid-feedback" role="alert">
+                                    @if ($errors->has('email'))
+                                      <strong>{{ $errors->first('email') }}</strong>
+                                    @endif
+                                  </span>
                                 </div>
                                 <div class="col">
                                   <input class="form-control form-control-sm {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" value="" placeholder="Password">
-                                  @if ($errors->has('password'))
-                                      <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $errors->first('password') }}</strong>
-                                      </span>
-                                  @endif
+                                  <span class="invalid-feedback" role="alert">
+                                    @if ($errors->has('password'))
+                                      <strong>{{ $errors->first('password') }}</strong>
+                                    @endif
+                                  </span>
                                 </div>
                                 <div class="col">
                                   <button type="submit" class="form-control form-control-sm btn-secondary">Logear</button>
