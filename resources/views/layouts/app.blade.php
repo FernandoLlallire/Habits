@@ -63,14 +63,42 @@
                     <ul class="navbar-nav ml-auto colorWhite">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+
+                            <form class="formLogIn form-inline"  action="{{ route('login') }}" method="post">
+                              @csrf
+                              <div class="form-row">
+                                <div class="col">
+                                  <input class="form-control form-control-sm {{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ old('email') }}" placeholder="E-mail">
+                                  @if ($errors->has('email'))
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $errors->first('email') }}</strong>
+                                      </span>
+                                  @endif
+                                </div>
+                                <div class="col">
+                                  <input class="form-control form-control-sm {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" value="" placeholder="Password">
+                                  @if ($errors->has('password'))
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $errors->first('password') }}</strong>
+                                      </span>
+                                  @endif
+                                </div>
+                                <div class="col">
+                                  <button type="submit" class="form-control form-control-sm btn-secondary">Logear</button>
+                                </div>
+                                <div class="col">
+                                  <a href="{{ route('register') }}" class="btn btn-primary btn-sm">Registrar</a>
+                                </div>
+                              </div>
+                            </form>
+                            {{-- <li class="nav-item">
                                 <a class="nav-link colorWhite" href="{{ route('login') }}">Logear</a>
-                            </li>
-                            <li class="nav-item">
+                            </li> --}}
+                            {{-- <li class="nav-item">
                                 @if (Route::has('register'))
                                     <a class="nav-link colorWhite" href="{{ route('register') }}">Registrar</a>
                                 @endif
-                            </li>
+                            </li> --}}
                         @else
 
                             <li class="nav-item dropdown">
@@ -107,7 +135,7 @@
             @yield('content')
         </main>
         <br><br>
-        <footer class="footer transparent col-lg-12 justify-content-center">
+        <footer class="footer transparent col-lg-12 justify-content-center pt-2">
           <div class="container  col-md-6">
             <div class="mx-auto text-center mb-2" >
               <ul class="list-inline mb-0 ">
