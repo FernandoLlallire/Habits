@@ -30,7 +30,7 @@ body {
 footer {
   position: absolute!important;
   bottom: 0!important;
-  background-color: rgba(255, 255, 255, 0.2);;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 /*Para el footer en el pie de pagina*/
 .maxSize{
@@ -58,4 +58,9 @@ Groso!!1 editar el color del checkbox pero ojo q es para todos....*/
 .carrouselSize{
   height: 500px!important;
   overflow: hidden;
+}
+.imgFooter{
+  height: 1.3rem;
+  width: 1.3rem;
+  color: #666666;
 }

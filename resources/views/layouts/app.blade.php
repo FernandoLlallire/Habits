@@ -107,31 +107,29 @@
             @yield('content')
         </main>
         <br><br>
-        <footer class="footer transparent col-lg-12">
-          <div class="container">
-            <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-              <ul class="list-inline mb-0">
+        <footer class="footer transparent col-lg-12 justify-content-center">
+          <div class="container  col-md-6">
+            <div class="mx-auto text-center mb-2" >
+              <ul class="list-inline mb-0 ">
                 <li class="list-inline-item mr-3">
-                  <a href="#">
-                    <i class="fab fa-facebook fa-2x fa-fw"></i>
+                  <a href="https://www.facebook.com/fer.llallire" target="_blank">
+                    <img src={{asset('images/facebook.svg')}} alt="facebook" class= 'imgFooter'>
                   </a>
                 </li>
                 <li class="list-inline-item mr-3">
-                  <a href="#">
-                    <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                  <a href="https://www.instagram.com/fer.llallire/" target="_blank">
+                    <img src={{asset('images/instagram.svg')}} alt="instagram" class= 'imgFooter'>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fab fa-instagram fa-2x fa-fw"></i>
+                  <a href="https://www.linkedin.com/in/fernando-llallire/" target="_blank">
+                    <img src={{asset('images/linkedin.svg')}} alt="linkenid" class= 'imgFooter'>
                   </a>
                 </li>
               </ul>
             </div>
-            <div class="row">
-              <div class="col-lg-4">
-              </div>
-              <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <div class="row" >
+              <div class="mx-auto text-center">
                 <p class="text-muted small mb-4 mb-lg-0">&copy; Habits - Fernando Llallire 2018 - All Rights Reserved.</p>
               </div>
             </div>
