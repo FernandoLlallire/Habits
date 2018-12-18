@@ -8,13 +8,16 @@ body{
       /* font-family: 'Dancing Script', cursive; */
 }
 .brandInPage{
-  font-size: 5em;
+  font-size: 6rem;
 }
 .navbarTextSize{
   font-size: 1.1em;
 }
 .Transparent{
   background: transparent!important;
+}
+.colorCardRegister{
+  background-color: rgba(194, 197, 213, 0.47);
 }
 /*Para el footer en el pie de pagina*/
 html {

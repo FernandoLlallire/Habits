@@ -118,7 +118,7 @@ window.onload = function () {
       div.className = "form-group row divProvince";
       var divContent = '<label for="Province" class="col-md-4 col-form-label text-md-right">Provincia</label>';
       divContent += '<div class="col-md-6">';
-      divContent += '<select id="province" type="text" class="selectorProvince form-control" name="province">';
+      divContent += '<select id="province" type="text" class="selectorProvince form-control form-control-sm" name="province">';
       divContent += '</select>';
       divContent += '</div>';
       div.innerHTML = divContent;
