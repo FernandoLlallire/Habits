@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ChallengesCreateRequest;
 use App\Http\Requests\ChallengesEditRequest;
 use App\Category;
+use App\User;
 use App\Challenge;
 use Auth;
 
@@ -120,5 +121,10 @@ class ChallengesController extends Controller
       }
        $challenge->finish = ($request->finish) ? 1 : 0; // por que es un tinyint
       $challenge->save();
+    }
+
+    public function challengesApi(){
+      $challenges =  Challenge::orderBy('id', 'desc')->where('user_id',Auth::user()->id)->get();
+    	return ($challenges);
     }
 }
